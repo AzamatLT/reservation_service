@@ -1,7 +1,9 @@
 import GET from './GET.js';
+import kafka_o_i from './kafka_out_into_topic.js';
 
 // Интенсивность запрсоов (RPS / RPM / RPH задаётся далее в timeUnit)
-const GET_startRate = 100;
+const GET_startRate = 10;
+const kafka_startRate = 5;
 
 // еденица измерения RPS / RPM / RPH
 const timeUnit = '1s';
@@ -56,10 +58,14 @@ export const options = {
   // ],
   scenarios: {
     GET_startRate: getOptions(GET_startRate, 'GET_exec'),
+    kafka_startRate: getOptions(kafka_startRate, 'kafka_exec'),
   }
 }
 
 export function GET_exec() {
   GET();
+}
+export function kafka_exec() {
+  kafka_o_i();
 }
 
